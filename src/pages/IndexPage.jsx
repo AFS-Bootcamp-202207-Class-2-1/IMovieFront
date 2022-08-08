@@ -4,7 +4,7 @@ import '../assets/less/IndexPage.less'
 const IndexPage = () => {
     return (
         <div>
-            首页
+            
         </div>
     )
 }

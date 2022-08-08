@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink , Outlet} from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import "../assets/less/IndexLayout.less"
 import Menu from '../components/Menu'
 

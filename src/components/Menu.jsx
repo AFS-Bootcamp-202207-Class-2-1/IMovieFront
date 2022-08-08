@@ -21,7 +21,6 @@ const Menu = () => {
                         </li>
                         <li>
                             <NavLink to="/movies">电影</NavLink>
-
                         </li>
                         <li>
                             <NavLink to="/user">我的</NavLink>
