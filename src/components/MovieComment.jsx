@@ -1,13 +1,11 @@
 import React from 'react';
-import detail_comment_icon from '../assets/iconfont/detail_comment_icon.png'
+// import detail_comment_icon from '../assets/iconfont/detail_comment_icon.png'
+import MovieBanner from './MovieBanner';
 
 const MovieComment = () => {
     return (
         <div>
-             <div className="movie-comment-header">
-                <img src={detail_comment_icon} alt="logo" className="movie-images-icon"/>
-                <h4>观影评论</h4>
-            </div>
+            <MovieBanner title="观影评论" icon="../assets/iconfont/detail_comment_icon.png"/>
         </div>
     );
 };

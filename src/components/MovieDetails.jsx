@@ -3,7 +3,8 @@ import  MovieCover from '../assets/images/movie_cover.png';
 import { Rate } from 'antd'
 import '../assets/less/MovieDetails.less'
 
-const MovieDetails = () => {
+const MovieDetails = (props) => {
+    const { movie } = props;
     return (
         <div className="Detail-Movie">
             <img src={MovieCover} alt="cover" />

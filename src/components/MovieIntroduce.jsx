@@ -1,7 +1,8 @@
 import React from 'react';
 import detail_introduce_icon from '../assets/iconfont/detail_introduce_icon.png'
 
-const MovieIntroduceHeader = () => {
+const MovieIntroduceHeader = (props) => {
+    const {content} = props;
     return (
         <div>
             <div className="movie-introduce-header">

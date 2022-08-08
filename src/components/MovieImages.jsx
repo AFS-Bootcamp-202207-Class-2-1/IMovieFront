@@ -3,7 +3,8 @@ import React from 'react'
 import detail_images_icon from '../assets/iconfont/detail_images_icon.png'
 import movie_detail_cover from '../assets/images/movie_detail_cover.png'
 
-function MovieImages() {
+function MovieImages(props) {
+    const {images} = props;
     return (
         <div>
             <div className="movie-images-header">
@@ -15,7 +16,7 @@ function MovieImages() {
                     <Col span={15} align="right">
                         <img src={movie_detail_cover} alt="images" className="large-image"/>
                     </Col>
-                    <Col span={9}  >
+                    <Col span={9} >
                         <Row style={{height: "146.5px"}}>
                             <Col span={12} align="center">
                                 <img src={movie_detail_cover} alt="images" className="small-image" />
