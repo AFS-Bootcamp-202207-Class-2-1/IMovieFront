@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink , Outlet} from 'react-router-dom';
-import "./IndexLayout.css"
+import "../assets/less/IndexLayout.less"
 import  IndexLogo from '../assets/images/IndexLogo.svg'
 import { Col, Row } from 'antd';
 
