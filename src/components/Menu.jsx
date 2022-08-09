@@ -1,35 +1,40 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import  IndexLogo from '../assets/images/logo.png';
-import  ArcoDesignUser from '../assets/iconfont/arcoDesign-user.svg';
-import { Col, Row } from 'antd';
+import '../assets/less/menu.less'
+import { Col, Row, Button } from 'antd';
+import { UserOutlined  } from '@ant-design/icons';
 
 const Menu = () => {
     return (
-        <div className='menu-wrapper'>
-            <Row>
-                <Col span={4}>
-                    <div className='Logo'>
-                            <a href="/"><img src={IndexLogo} alt="logo" width="72px" height="72px"/>&nbsp;IMovie</a>
-                    </div>
-                </Col>
-                <Col span={12}>
-                    <ul className='nav'>
-                        <li>
-                            <NavLink to="/">首页</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to="/movies">电影</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to="/user">我的</NavLink>
-                        </li>
-                    </ul>
-                </Col>
-                <Col span={2} offset={6}>
-                    <a href="/login" className='login'><img src={ArcoDesignUser} alt="logo" width="24px" height="24px"/>&nbsp;登陆</a>
-                </Col>
-            </Row>
+        <div className="menu-wrapper">
+            <div className='menu-container'>
+                <Row>
+                    <Col span={5}>
+                        <div className='Logo'>
+                            <a href="/"><img src={IndexLogo} alt="logo" height="70px"/>&nbsp;IMovie</a>
+                        </div>
+                    </Col>
+                    <Col span={11}>
+                        <ul className='nav'>
+                            <li>
+                                <NavLink to="/">首页</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/movies">电影</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/user">我的</NavLink>
+                            </li>
+                        </ul>
+                    </Col>
+                    <Col span={3} offset={5}>
+                        <a href="/login" className='login'>
+                            <Button icon={<UserOutlined />} shape="circle" size='large'></Button>
+                            &nbsp;登陆</a>
+                    </Col>
+                </Row>
+            </div>
         </div>
     );
 };

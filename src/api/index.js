@@ -1,5 +1,5 @@
 import api from "./api"
 
 export const getMovies = () => {
-    return api.get("/movies")
+    return api.get("/home/movieInfo")
 };

@@ -1,8 +1,8 @@
 import React,{ useState,useEffect } from 'react'
 import '../assets/less/IndexPage.less'
 import { getMovies } from '../api'
-import MovieItem from '../components/MovieItem'
-import Carousel from '../components/Banner'
+import MovieItem from '../components/homepage/MovieItem'
+import Carousel from '../components/homepage/Banner'
 
 const IndexPage = () => {
     const [movieList, setMovieList] = useState([]);

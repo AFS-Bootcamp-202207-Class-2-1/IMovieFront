@@ -4,7 +4,8 @@ import detail_images_icon from '../assets/iconfont/detail_images_icon.png'
 import movie_detail_cover from '../assets/images/movie_detail_cover.png'
 
 function MovieImages(props) {
-    const {images} = props;
+    const {movie} = props;
+
     return (
         <div>
             <div className="movie-images-header">
@@ -14,7 +15,8 @@ function MovieImages(props) {
             <div className="movie-images-body">
                 <Row style={{height: "293px"}}>
                     <Col span={15} align="right">
-                        <img src={movie_detail_cover} alt="images" className="large-image"/>
+                        <Image src={movie_detail_cover} className="large-image"/>
+                        {/* <img src={movie_detail_cover} alt="images" className="large-image"/> */}
                     </Col>
                     <Col span={9} >
                         <Row style={{height: "146.5px"}}>
