@@ -1,16 +1,30 @@
-import React from 'react'
+import React ,{ useState,useEffect }from 'react'
 import MovieDetails from '../components/MovieDetails'
 import '../assets/less/MoviesPage.less'
 import MovieIntroduce from '../components/MovieIntroduce'
 import MovieImages from '../components/MovieImages'
 import MovieComment from '../components/MovieComment'
+import {getMovieDetail} from "../api/ticketSelect"
+import { useParams } from 'react-router-dom'
 
-function MoviesPage(){
+function MoviesPage(props){
+
+    const [movie, setMovie] = useState([]);
+    const { id } = useParams();
+    
+    useEffect(() => {
+        getMovieDetail(id).then((response) => {
+            console.log(response.data)
+            setMovie(response.data)
+        })
+    }, [])
+
+
     return (
         <div>
-            <MovieDetails/>
-            <MovieIntroduce/>
-            <MovieImages/>
+            <MovieDetails movie={movie} />
+            <MovieIntroduce movie={movie}/>
+            <MovieImages movie={movie}/>
             <MovieComment/>
         </div>
     )

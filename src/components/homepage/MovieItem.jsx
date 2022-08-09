@@ -7,7 +7,7 @@ const MovieItem = (props) => {
     
     return (
         <div className='movie-item'>
-            <NavLink to='/'><img className='movie-img' src={value.movieImage} /></NavLink>
+            <NavLink to={`/movies/${value.movieId}`}><img className='movie-img' src={value.movieImage} /></NavLink>
             <div className='movie-description'>
                 <div className='title-row'>
                     <span className='movie-name'>{value.movieName}</span>

@@ -3,6 +3,7 @@ import '../assets/less/ticketSession.less'
 import { useState,useEffect } from 'react';
 import { getSessions,getMovieDetail } from '../api/ticketSelect'
 import { Button,DatePicker } from "antd";
+import SelectSeat from '../components/SelectSeat';
 
 const TicketSelect = () => {
 
@@ -43,6 +44,7 @@ const TicketSelect = () => {
             <div className='score'>
                 {details.movieScore}
             </div>
+            <SelectSeat/>
         </div>
     );
 };
