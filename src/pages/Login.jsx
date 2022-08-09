@@ -6,22 +6,27 @@ import { Button, Form, Input, message } from "antd";
 import { NavLink } from "react-router-dom";
 import { userLogin } from "../api/login";
 import "../assets/less/register.less";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-  const [message, setMessage] = useState("1111111");
+  const navigate = useNavigate();
+
   const success = () => {
-    message.success("This is a success message");
+    message.success("Login successfully");
   };
 
   const error = () => {
-    message.error("This is an error message");
+    message.error("The username and password are inconsistent");
   };
 
-  const onFinish = (values) => {
-    console.log("Received values of form: ", values);
-    userLogin(values).then((reponse) => {
-      setMessage(reponse.data);
-    });
+  const onFinish = async function (values) {
+    const response = await userLogin(values);
+    if (response.data === "login successfully") {
+      success();
+      navigate("/");
+    } else {
+      error();
+    }
   };
 
   const formItemLayout = {
@@ -64,7 +69,7 @@ export default function Login() {
           {...formItemLayout}
         >
           <Form.Item
-            name="Username"
+            name="usersName"
             label="UserName"
             rules={[
               {
@@ -81,7 +86,7 @@ export default function Login() {
           </Form.Item>
 
           <Form.Item
-            name="password"
+            name="usersPassword"
             label="Password"
             rules={[
               {

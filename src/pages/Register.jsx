@@ -7,6 +7,7 @@ import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Form, Input, Radio, Upload, Modal, message } from "antd";
 import { userRegister } from "../api/register";
 import "../assets/less/register.less";
+import { useNavigate } from "react-router-dom";
 
 function getBase64(file) {
   return new Promise((resolve, reject) => {
@@ -18,10 +19,10 @@ function getBase64(file) {
 }
 
 export default function Register() {
+  const navigate = useNavigate();
   const [previewVisible, setPreviewVisible] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
   const [fileList, setFileList] = useState([]);
-  const [promptMessage, setPromptMessage] = useState("1111111");
 
   const handleCancel = () => setPreviewVisible(false);
 
@@ -36,19 +37,21 @@ export default function Register() {
   const handleChange = ({ fileList }) => setFileList(fileList);
 
   const success = () => {
-    message.success("This is a success message");
+    message.success("Registered successfully");
   };
 
   const error = () => {
-    message.error("This is an error message");
+    message.error("The user already exists");
   };
 
-  const onFinish = (values) => {
-    console.log("Received values of form: ", values);
-    userRegister(values).then((reponse) => {
-      console.log(reponse.data, "reponseData");
-      setPromptMessage(reponse.data);
-    });
+  const onFinish = async function (values) {
+    const response = await userRegister(values);
+    if (response.data === "registered successfully") {
+      success();
+      navigate("/login");
+    } else {
+      error();
+    }
   };
 
   const formItemLayout = {
@@ -97,7 +100,7 @@ export default function Register() {
           {...formItemLayout}
         >
           <Form.Item
-            name="users_name"
+            name="usersName"
             label="UserName"
             rules={[
               {
@@ -114,7 +117,7 @@ export default function Register() {
           </Form.Item>
 
           <Form.Item
-            name="users_password"
+            name="usersPassword"
             label="Password"
             rules={[
               {
@@ -133,7 +136,7 @@ export default function Register() {
           <Form.Item
             name="confirm"
             label="Confirm Password"
-            dependencies={["users_password"]}
+            dependencies={["usersPassword"]}
             hasFeedback
             rules={[
               {
@@ -142,7 +145,7 @@ export default function Register() {
               },
               ({ getFieldValue }) => ({
                 validator(_, value) {
-                  if (!value || getFieldValue("users_password") === value) {
+                  if (!value || getFieldValue("usersPassword") === value) {
                     return Promise.resolve();
                   }
 
@@ -164,7 +167,7 @@ export default function Register() {
 
           <Form.Item
             label="Gender"
-            name="users_gender"
+            name="usersGender"
             rules={[
               {
                 required: true,
@@ -184,7 +187,7 @@ export default function Register() {
 
           <Form.Item label="Upload" valuePropName="fileList">
             <Upload
-              action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+              action=""
               listType="picture-card"
               fileList={fileList}
               onPreview={handlePreview}
