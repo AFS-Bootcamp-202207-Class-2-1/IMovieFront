@@ -1,15 +1,36 @@
 .layout-wrapper {
     width: 1280px;
     margin: 0 auto;
-    background: #F0EFEFEF;
+    background: #f0efefef;
 }
 
 .menu-wrapper {
-    height: 50px;
+    height: 72px;
     line-height: 50px;
+    .Logo {
+        a {
+            font-size: 20px;
+            color: #101010;
+        }
+       
+    }
     .nav {
         display: flex;
         list-style: none;
+        height: 72px;
         justify-content: space-between;
+        align-items: center;
+        a {
+            color: rgba(5, 68, 94, 100);
+            font-size: 18px;
+            font-family: SourceHanSansSC-bold !important;
+        }
+        
+    }
+    .login {
+        height: 72px;
+        line-height: 72px;
+        font-size: 18px;
+        color: #101010;
     }
 }

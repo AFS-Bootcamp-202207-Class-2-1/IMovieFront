@@ -7,7 +7,6 @@ import MoviesPage from "./pages/MoviesPage";
 
 function App() {
   return (
-    <div>
       <Routes>
         <Route path="/" element={<IndexLayout />}>
           <Route index element={<IndexPage />} />
@@ -16,7 +15,6 @@ function App() {
         <Route path="register" element={<Register />} />
         <Route path="login" element={<Login />} />
       </Routes>
-    </div>
   );
 }
 

@@ -64,10 +64,16 @@
     "workbox-webpack-plugin": "^6.4.1"
   },
   "scripts": {
+<<<<<<< HEAD
     "start": "DISABLE_ESLINT_PLUGIN=true node scripts/start.js",
     "build": "DISABLE_ESLINT_PLUGIN=true node scripts/build.js",
     "test": "",
     "serve": "node serve.js"
+=======
+    "start": "node scripts/start.js",
+    "build": "node scripts/build.js",
+    "test": ""
+>>>>>>> fix: Adjust navigation bar style
   },
   "eslintConfig": {
     "extends": [
