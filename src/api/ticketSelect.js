@@ -1,7 +1,11 @@
 import api from "./api"
 
 export const getSessions = (id) => {
-    return api.get("/session/1")
+    return api.get(`/session/${id}`)
+};
+
+export const getSessionSeats = (id) => {
+    return api.get(`/session/${id}`)
 };
 
 export const getMovieDetail = (id) => {

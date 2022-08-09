@@ -4,18 +4,19 @@ import { useState,useEffect } from 'react';
 import { getSessions,getMovieDetail } from '../api/ticketSelect'
 import { Button,DatePicker } from "antd";
 import SelectSeat from '../components/SelectSeat';
+import { useParams } from 'react-router-dom'
 
 const TicketSelect = () => {
 
     const [sessionList,setSessionList] = useState([])
     const [details,setDetails] = useState({})
+    const { id } = useParams();
 
     useEffect(() => {
-        getMovieDetail().then((response) => {
+        getMovieDetail(id).then((response) => {
             setDetails(response.data)
         });
-        getSessions().then((response) => {
-            console.log(response.data)
+        getSessions(1).then((response) => {
             setSessionList(response.data)
         })
     }, [])
@@ -24,8 +25,16 @@ const TicketSelect = () => {
         console.log(date, dateString);
     };
 
+    const selectSession = (id) => {
+        getSessions(id).then((response) => {
+            console.log(response.data)
+            setSessionList(response.data)
+        })
+    }
+
     return (
-        <div className="Detail-Movie">
+         <div>
+            <div className="Detail-Movie">
             <img className='movie-cover' src={details.movieImage} alt="cover" />
             <div className="DetailIntroduce">
                 <div className="fs-20 black-1 movie-name">{details.movieName}</div>
@@ -36,7 +45,7 @@ const TicketSelect = () => {
                     <div className='session-selector'>
                         {
                             sessionList.map((item,index) => (
-                                <Button key={index} value={item}>{item.cinemaName} {item.cinemaMovieTimeWatchtime} {item.cinemaMovieTimeEndtime}</Button>
+                                <Button key={index} value={item} onClick={()=>{ selectSession(item.cinemaMovieTimeId) }}>{item.cinemaName} {item.cinemaMovieTimeWatchtime} {item.cinemaMovieTimeEndtime}</Button>
                         ))}
                     </div>
                 </div>
@@ -44,7 +53,8 @@ const TicketSelect = () => {
             <div className='score'>
                 {details.movieScore}
             </div>
-            <SelectSeat/>
+         </div>
+         <SelectSeat />
         </div>
     );
 };
