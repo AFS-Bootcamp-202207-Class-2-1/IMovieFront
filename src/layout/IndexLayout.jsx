@@ -7,8 +7,8 @@ const IndexLayout = () => {
 
     return (
         <div className="screen-wrapper">
+            <Menu />
             <div className='layout-wrapper'>
-                <Menu />
                 <div className='content'>
                     <Outlet/>
                 </div>
