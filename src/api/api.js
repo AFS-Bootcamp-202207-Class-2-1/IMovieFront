@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: "https://imovie-front-dev.herokuapp.com/"
+    baseURL: "http://10.222.232.184:8083"
 })
   
 export default api;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Carousel } from 'antd' 
-import Banner01 from '../assets/images/banner01.jpg'
-import Banner02 from '../assets/images/banner02.jpg'
+import Banner01 from '../../assets/images/banner01.jpg'
+import Banner02 from '../../assets/images/banner02.jpg'
 
 const Banner = () => {
     return (

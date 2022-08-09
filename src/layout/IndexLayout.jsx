@@ -6,10 +6,12 @@ import Menu from '../components/Menu'
 const IndexLayout = () => {
 
     return (
-        <div className='layout-wrapper'>
-            <Menu />
-            <div className='content'>
-                <Outlet/>
+        <div className="screen-wrapper">
+            <div className='layout-wrapper'>
+                <Menu />
+                <div className='content'>
+                    <Outlet/>
+                </div>
             </div>
         </div>
     )
