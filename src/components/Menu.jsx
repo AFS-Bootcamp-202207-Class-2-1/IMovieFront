@@ -27,7 +27,7 @@ const Menu = () => {
                     </ul>
                 </Col>
                 <Col span={2} offset={6}>
-                    <a href="/" className="login"><img src={ArcoDesignUser} alt="logo" width="24px" height="24px"/>&nbsp;登陆</a>
+                    <a href="/login" className='login'><img src={ArcoDesignUser} alt="logo" width="24px" height="24px"/>&nbsp;登陆</a>
                 </Col>
             </Row>
         </div>
