@@ -1,4 +1,4 @@
-import { Row, Col } from 'antd'
+import { Row, Col, Image } from 'antd'
 import React from 'react'
 import detail_images_icon from '../assets/iconfont/detail_images_icon.png'
 import movie_detail_cover from '../assets/images/movie_detail_cover.png'
