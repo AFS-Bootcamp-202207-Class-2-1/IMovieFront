@@ -4,6 +4,7 @@ import IndexPage from "./pages/IndexPage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import MoviesPage from "./pages/MoviesPage";
+import TicketSelect from "./pages/TicketSelect";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Route path="/" element={<IndexLayout />}>
           <Route index element={<IndexPage />} />
           <Route path="/movies" element={<MoviesPage />} />
+          <Route path="/ticket" element={<TicketSelect />} />
         </Route>
         <Route path="register" element={<Register />} />
         <Route path="login" element={<Login />} />
