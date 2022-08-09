@@ -3,6 +3,7 @@ import iMovieLogo from "../assets/images/logo.png";
 import user from "../assets/iconfont/user.png";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Form, Input, message } from "antd";
+import { NavLink } from "react-router-dom";
 import { userLogin } from "../api/login";
 import "../assets/less/register.less";
 
@@ -51,7 +52,7 @@ export default function Login() {
       <div className="login_form">
         <h2 className="title">
           <img src={user} alt="" width="65px" height="63px" />
-          Register
+          Login
         </h2>
         <Form
           name="normal_login"
@@ -106,6 +107,7 @@ export default function Login() {
             </Button>
           </Form.Item>
         </Form>
+        <NavLink to="/register">立即注册</NavLink>
       </div>
     </div>
   );
