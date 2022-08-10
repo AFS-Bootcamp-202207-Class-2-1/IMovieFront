@@ -14,7 +14,6 @@ function MoviesPage(props){
     
     useEffect(() => {
         getMovieDetail(id).then((response) => {
-            console.log(response.data)
             setMovie(response.data)
         })
     })

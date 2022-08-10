@@ -9,17 +9,24 @@ import { useParams } from 'react-router-dom'
 const TicketSelect = () => {
 
     const [sessionList,setSessionList] = useState([])
-    const [sessionSeats,setSessionSeats] = useState({})
+    const [sessionSeats,setSessionSeats] = useState([])
+    const [cinemaMovieTimePrice, setCinemaMovieTimePrice] = useState(0)
     const [details,setDetails] = useState({})
     const { id } = useParams();
-    // const {  }
 
     useEffect(() => {
         getMovieDetail(id).then((response) => {
             setDetails(response.data)
         });
-        getSessions(1).then((response) => {
-            setSessionList(response.data)
+         getSessions(id).then(async (response) => {
+            await setSessionList(response.data)
+            console.log(response.data)
+            return response.data
+        }).then(async (response)=>{
+            await getSessionSeats(response[1].cinemaMovieTimeId).then((response) => {
+                console.log(response.data)
+                setSessionSeats(response.data)
+            })
         })
     }, [])
 
@@ -57,7 +64,7 @@ const TicketSelect = () => {
                     {details.movieScore}
                 </div>
             </div>
-         <SelectSeat sessionSeats={sessionSeats}/>
+         <SelectSeat seatList={sessionSeats}/>
         </div>
     );
 };

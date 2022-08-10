@@ -4,7 +4,6 @@ import detail_images_icon from '../assets/iconfont/detail_images_icon.png'
 
 function MovieImages(props) {
     const {movie} = props;
-    console.log(movie)
 
     return (
         <div>

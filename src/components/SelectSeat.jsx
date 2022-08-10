@@ -1,31 +1,33 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState , useEffect} from 'react'
 import { Row, Col } from 'antd'
 import "../assets/less/SelectSeat.less"
 import  unSold from "../assets/images/unsold.png"
 import  sold from "../assets/images/sold.png"
 import  selected from "../assets/images/select.png"
-import {getSeats} from "../api/login"
+import { getSeats } from "../api/login"
 
 
 function SelectSeat(props) {
-    console.log(props);
-    const [seatList, setSeatList] = useState([{"status":true,"id":"1"},{"status":true,"id":"2"},{"status":true,"id":"3"},{"status":true,"id":"4"},{"status":false,"id":"5","row":1, "col":5},{"status":false,"id":"6","row":1, "col":6},{"status":false,"id":"7"},{"status":false,"id":"8"},{"status":false,"id":"9"},{"status":false,"id":"10"},{"status":false,"id":"11"},{"status":false,"id":"12"},{"status":false,"id":"13"},{"status":false,"id":"14"},{"status":false,"id":"15"},{"status":false,"id":"16"},{"status":false,"id":"17"},{"status":false,"id":"18"},{"status":false,"id":"19"},{"status":false,"id":"20"},{"status":false,"id":"21"},{"status":false,"id":"22"},{"status":false,"id":"23"},{"status":false,"id":"24"}])
+
+    const { seatList } = props
+    seatList.sort((seat1, seat2) => {
+        return seat1.seatId - seat2.seatId
+    })
     const [seatInfo, setSeatInfo] = useState("还未选择座位")
     const [seatInfoTable,setSeatInfoTable] = useState({})
     const [selectedState ] = useState(new Array(24).fill(false))
 
     const select = (index) => {
-        if(seatList[index].status === false ){
+        if(seatList[index].seatReserve === false ){
             if(selectedState[index] === false ){
                 selectedState[index] = true
                 const img = document.getElementById(index);
                 img.src = selected; 
-                seatInfoTable[index] = `${seatList[index].row}行 ${seatList[index].col}列`
-                console.dir(seatInfoTable);
+                seatInfoTable[index] = `${seatList[index].seatRow + 1}行 ${seatList[index].seatCol + 1}列`
                 let message = "";
                 Object.keys(seatInfoTable).forEach((key) => {
-                    message +=seatInfoTable[key] + ", "; 
+                    message +="[" + seatInfoTable[key] + "]"+ ",  "; 
                 })
                 message = message.slice(0,message.length - 2);
                 setSeatInfo(message)
@@ -37,8 +39,9 @@ function SelectSeat(props) {
                 delete seatInfoTable[index];
                 let message = "";
                 Object.keys(seatInfoTable).forEach((key) => {
-                    message +=seatInfoTable[key] + "\n"; 
+                    message +=seatInfoTable[key] + ", "; 
                 })
+                message = message.slice(0,message.length - 2);
                 setSeatInfo(message)
             }
         }
@@ -54,7 +57,7 @@ function SelectSeat(props) {
                         {
                             seatList.map((seat,index) => {
                                 if(index < 6 ){
-                                    return <Col span={3}> <img id={index} src={seatList[index].status === false ? unSold : sold} alt="" className='seat' onClick={() => select(index)}/></Col>
+                                    return <Col span={3}> <img id={index} src={seatList[index].seatReserve === false ? unSold : sold} alt="" className='seat' onClick={() => select(index)}/></Col>
                                 }
                             })
                         }
@@ -64,7 +67,7 @@ function SelectSeat(props) {
                         {
                             seatList.map((seat,index) => {
                                 if( index >= 6 && index < 12 ){
-                                    return <Col span={3}><img id={index} src={seatList[index].status === false ? unSold : sold} alt="" className='seat' onClick={() => select(index)}/></Col>
+                                    return <Col span={3}><img id={index} src={seatList[index].seatReserve === false ? unSold : sold} alt="" className='seat' onClick={() => select(index)}/></Col>
                                 }
                             })
                         }
@@ -74,7 +77,7 @@ function SelectSeat(props) {
                         {
                            seatList.map((seat,index) => {
                             if( index >= 12 && index < 18 ){
-                                return <Col span={3}><img id={index} src={seatList[index].status === false ? unSold : sold} alt="" className='seat' onClick={() => select(index)}/></Col>
+                                return <Col span={3}><img id={index} src={seatList[index].seatReserve === false ? unSold : sold} alt="" className='seat' onClick={() => select(index)}/></Col>
                             }
                         })
                         }
@@ -84,7 +87,7 @@ function SelectSeat(props) {
                         {
                             seatList.map((seat,index) => {
                                 if(index >= 18 && index < 24 ){
-                                    return <Col span={3}><img id={index} src={seatList[index].status === false ? unSold : sold} alt="" className='seat' onClick={() => select(index)}/></Col>
+                                    return <Col span={3}><img id={index} src={seatList[index].seatReserve === false ? unSold : sold} alt="" className='seat' onClick={() => select(index)}/></Col>
                                 }
                             })
                         }
