@@ -40,7 +40,7 @@ const Menu = () => {
               ></Button>
               {sessionStorage.getItem("user") == null
                 ? "登录"
-                : JSON.parse(sessionStorage.getItem("user")).userName}
+                : JSON.parse(sessionStorage.getItem("user")).username}
             </a>
           </Col>
         </Row>
