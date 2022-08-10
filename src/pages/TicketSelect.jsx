@@ -5,7 +5,6 @@ import { getSessions,getMovieDetail } from '../api/ticketSelect'
 import { Button,DatePicker } from "antd";
 import SelectSeat from '../components/SelectSeat';
 import { useParams } from 'react-router-dom'
-import ticketImg from '../assets/images/ticket.png'
 
 const TicketSelect = () => {
 
@@ -37,9 +36,6 @@ const TicketSelect = () => {
 
     return (
          <div>
-            <div>
-                <img className= {isVisible ? 'open' : 'close'} src={ticketImg} alt="" />
-            </div>
             <div className="Detail-Movie">
             <img className='movie-cover' src={details.movieImage} alt="cover" />
             <div className="DetailIntroduce">
