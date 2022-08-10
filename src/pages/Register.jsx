@@ -20,21 +20,6 @@ function getBase64(file) {
 
 export default function Register() {
   const navigate = useNavigate();
-  const [previewVisible, setPreviewVisible] = useState(false);
-  const [previewImage, setPreviewImage] = useState("");
-  const [fileList, setFileList] = useState([]);
-
-  const handleCancel = () => setPreviewVisible(false);
-
-  const handlePreview = async (file) => {
-    if (!file.url && !file.preview) {
-      file.preview = await getBase64(file.originFileObj);
-    }
-    setPreviewVisible(true);
-    setPreviewImage(file.url || file.preview);
-  };
-
-  const handleChange = ({ fileList }) => setFileList(fileList);
 
   const success = () => {
     message.success("Registered successfully");
@@ -72,12 +57,6 @@ export default function Register() {
       },
     },
   };
-
-  const uploadButton = (
-    <div>
-      <div className="ant-upload-text">Upload</div>
-    </div>
-  );
 
   return (
     <div className="parent">
@@ -183,25 +162,6 @@ export default function Register() {
                 <img src={girl} alt="" width="50px" height="50px" />
               </Radio>
             </Radio.Group>
-          </Form.Item>
-
-          <Form.Item label="Upload" valuePropName="fileList">
-            <Upload
-              action=""
-              listType="picture-card"
-              fileList={fileList}
-              onPreview={handlePreview}
-              onChange={handleChange}
-            >
-              {fileList.length >= 1 ? null : uploadButton}
-            </Upload>
-            <Modal
-              visible={previewVisible}
-              footer={null}
-              onCancel={handleCancel}
-            >
-              <img alt="example" style={{ width: "100%" }} src={previewImage} />
-            </Modal>
           </Form.Item>
 
           <Form.Item>
