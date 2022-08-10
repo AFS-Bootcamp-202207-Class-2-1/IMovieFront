@@ -21,9 +21,10 @@ export default function Login() {
 
   const onFinish = async function (values) {
     const response = await userLogin(values);
-    if (response.data === "login successfully") {
+    if (response.data.msg === "login successfully") {
       success();
       navigate("/");
+      sessionStorage.setItem("user", JSON.stringify(response.data));
     } else {
       error();
     }
