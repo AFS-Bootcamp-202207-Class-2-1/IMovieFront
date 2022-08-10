@@ -17,7 +17,7 @@ function MoviesPage(props){
             console.log(response.data)
             setMovie(response.data)
         })
-    }, [])
+    })
 
 
     return (

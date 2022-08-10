@@ -12,6 +12,7 @@ const TicketSelect = () => {
     const [sessionSeats,setSessionSeats] = useState({})
     const [details,setDetails] = useState({})
     const { id } = useParams();
+    // const {  }
 
     useEffect(() => {
         getMovieDetail(id).then((response) => {
@@ -27,6 +28,7 @@ const TicketSelect = () => {
     };
 
     const selectSession = (id) => {
+
         getSessionSeats(id).then((response) => {
             console.log(response.data)
             setSessionSeats(response.data)
