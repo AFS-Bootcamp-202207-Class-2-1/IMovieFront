@@ -5,11 +5,14 @@ import { getSessions,getMovieDetail } from '../api/ticketSelect'
 import { Button,DatePicker } from "antd";
 import SelectSeat from '../components/SelectSeat';
 import { useParams } from 'react-router-dom'
+import ticketImg from '../assets/images/ticket.png'
 
 const TicketSelect = () => {
 
     const [sessionList,setSessionList] = useState([])
     const [details,setDetails] = useState({})
+    const [isVisible,setIsVisible] = useState(false)
+
     const { id } = useParams();
 
     useEffect(() => {
@@ -27,13 +30,16 @@ const TicketSelect = () => {
 
     const selectSession = (id) => {
         getSessions(id).then((response) => {
-            console.log(response.data)
+            setIsVisible(!isVisible)
             setSessionList(response.data)
         })
     }
 
     return (
          <div>
+            <div>
+                <img className= {isVisible ? 'open' : 'close'} src={ticketImg} alt="" />
+            </div>
             <div className="Detail-Movie">
             <img className='movie-cover' src={details.movieImage} alt="cover" />
             <div className="DetailIntroduce">

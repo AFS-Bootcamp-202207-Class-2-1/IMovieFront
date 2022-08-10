@@ -9,3 +9,37 @@
     color: #BD3124;
     padding-top: 20px;
 }
+
+
+/* 显示或关闭动画*/
+.open {
+    animation: slideContentUp 2s ease both;
+    transform: translateX(0);
+    height: 200px;
+}
+ 
+.close {
+    transform: translateX(-80vw);
+    animation: slideContentDown 2s ease both;
+}
+
+/* 动态设置高度 */
+@keyframes slideContentUp {
+    from {
+        height: 0;
+    }
+
+    to {
+        height: 280px;
+    }
+}
+
+@keyframes slideContentDown {
+    from {
+        height: 280px;
+    }
+
+    to {
+        height: 0;
+    }
+}
